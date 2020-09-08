@@ -106,8 +106,9 @@ console.log(RandomUpperCase)
 
 // place the new random variables into arrays which will be called depending on the user input
 
+// create an all-encompassing array, into which values can be pushed
 
-
+var AllCharacters = []
 
 
 // to randomly select whether SpecChar/Number/Upper/Lower Case
@@ -127,29 +128,50 @@ if (PasswordLength > 128) {
 else if (PasswordLength >= 8 && PasswordLength <= 128) {
   // Invoke the main function here:
 
-  var useSpecChar = prompt ("Do you want to Use Special Characters")
+  var useSpecChar = confirm ("Do you want to Use Special Characters")
 
   if (useSpecChar == true) {
   console.log(RandomSpecChar)
+  var AllCharacters = AllCharacters.concat(specialCharacters)
   }
-  var useNumberChar = prompt ("Do you want to use Numbers?")
+  
+  var useNumberChar = confirm ("Do you want to use Numbers?")
 
   if (useNumberChar == true ) {
   console.log(RandomNumChar)
+  var AllCharacters = AllCharacters.concat(numericCharacters)
   }
 
-  var useLowerCase = prompt ("Do you want to use Lower Case?")
+  var useLowerCase = confirm ("Do you want to use Lower Case?")
 
   if (useLowerCase == true) {
   console.log(RandomLowerCase)
+  var AllCharacters = AllCharacters.concat(lowerCasedCharacters)
   }
   
-  var useUpperCase = prompt ("Do you want to use Upper Case?")
+  var useUpperCase = confirm ("Do you want to use Upper Case?")
 
   if (useUpperCase == true) {
   console.log(RandomUpperCase)
+  var AllCharacters = AllCharacters.concat(upperCasedCharacters)
   }
-}      
+
+// then create a function, to grab random characters from AllCharacters
+
+  function generatePassword () {
+    for (var i = 0; i < PasswordLength; index++) {  
+    console.log[Math.floor(Math.random()*AllCharacters.length)]
+    
+  generatePassword ()
+
+    // then called the functions, moving the password into the right place
+
+    }
+  }
+  
+
+}
+
     
 
 // Write password to the #password input
