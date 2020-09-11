@@ -8,7 +8,7 @@
  
  // 3. Add event handler
  button.addEventListener ("click", function() {
-   alert("Put startquick function here");
+   alert("Put start function here");
  });
  
  //}
@@ -67,10 +67,10 @@ var li4 = document.createElement("li");
 var listItems = document.getElementsByTagName("li");
 
 // text content
-li1.textContent = questions.options[0];
-li2.textContent = questions.options[1];
-li3.textContent = questions.options[2];
-li4.textContent = questions.options[3];
+li1.textContent = questions[i].options[0];
+li2.textContent = questions[i].options[1];
+li3.textContent = questions[i].options[2];
+li4.textContent = questions[i].options[3];
 
 //append the elements
 
@@ -80,7 +80,26 @@ listEl.appendChild(li3);
 listEl.appendChild(li4);
 document.getElementById("Questions").appendChild(listEl);  
   
-  
+// also create buttons for each answer
+
+ var answerabutton = document.createElement("button");
+ button.innerHTML = "answer A";
+ document.getElementById("Questions").appendChild(answerabutton);
+ 
+ // with an event handler
+ answerabutton.addEventListener ("click", function() {
+   alert("Move to the next question");
+ });
+
+ var answerbbutton = document.createElement("button");
+ button.innerHTML = "answer B";
+ document.getElementById("Questions").appendChild(answerbbutton);
+ 
+ // with an event handler
+ answerbbutton.addEventListener ("click", function() {
+   alert("Move to the next question");
+ });
+
 var answer = prompt(questions[i].question);
 
   
