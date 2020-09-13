@@ -16,7 +16,7 @@
  //create variable for the counter
  var counter = document.getElementById("count");
  var count = 0;
- counter.textContent = "this is your score: " + count
+ counter.textContent = "Your current score is: " + count
  
 
  
@@ -49,17 +49,18 @@ var questions = [
     {
     question: "What is the second question?",
     options: ["Here is OptionA for Q2", "Here is Option B for Q2", "Here is Option C for Q2", "Here is Option D for Q2"],
-    correctanswer: 0
+    correctanswer: "a"
     }
 ];   
 
 // We start the Quiz with a score of 0.
 var score = 0;
 
+//and a question count of 0
+var questioncount = 0;
 
-
-  
-// Display current question to user and ask OK/Cancel
+ 
+// Display first question/answers to user 
 //Create a list for the possible answers
 
 var listEl = document.createElement("ul");
@@ -98,9 +99,13 @@ document.getElementById("Questions").appendChild(listEl);
     alert("Correct!!");
     score++;
     count++;
+    counter.textContent = "Your current score is: " + count;
+    questioncount++;
+    NextQuestions();
    }
    else {
     alert("Wrong");
+    secondsLeft -= 15;
    } 
  });
 
@@ -112,7 +117,16 @@ document.getElementById("Questions").appendChild(listEl);
  
  // with an event handler
  answerbbutton.addEventListener ("click", function() {
-   alert("Move to the next question");
+    if (questions[0].correctanswer == "b") {
+        alert("Correct!!");
+        score++;
+        count++;
+        counter.textContent = "Your current score is: " + count;
+       }
+       else {
+        alert("Wrong");
+        secondsLeft -= 15;
+       } 
  });
 
  var answercbutton = document.createElement("button");
@@ -121,7 +135,16 @@ document.getElementById("Questions").appendChild(listEl);
  
  // with an event handler
  answercbutton.addEventListener ("click", function() {
-   alert("Move to the next question");
+    if (questions[0].correctanswer == "c") {
+        alert("Correct!!");
+        score++;
+        count++;
+        counter.textContent = "Your current score is: " + count;
+       }
+       else {
+        alert("Wrong");
+        secondsLeft -= 15;
+       } ;
  });
 
  var answerdbutton = document.createElement("button");
@@ -130,8 +153,29 @@ document.getElementById("Questions").appendChild(listEl);
  
  // with an event handler
  answerdbutton.addEventListener ("click", function() {
-   alert("Move to the next question");
+    if (questions[0].correctanswer == "d") {
+        alert("Correct!!");
+        score++;
+        count++;
+        counter.textContent = "Your current score is: " + count;
+       }
+       else {
+        alert("Wrong");
+        secondsLeft -= 15;
+       } ;
  });
+
+function NextQuestions() {
+
+    console.log(questioncount);
+      
+        listEl.textContent = questions[questioncount].question;
+        li1.textContent = questions[questioncount].options[0];
+        li2.textContent = questions[questioncount].options[1];
+        li3.textContent = questions[questioncount].options[2];
+        li4.textContent = questions[questioncount].options[3];
+ 
+}
 
 }
 
@@ -179,7 +223,7 @@ questions();
 var timeEl = document.querySelector(".time");
 var mainEl = document.getElementById("main");
 
-var secondsLeft = 15;
+var secondsLeft = 45;
 
 function setTime() {
   var timerInterval = setInterval(function() {
