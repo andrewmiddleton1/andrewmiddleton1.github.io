@@ -14,8 +14,13 @@
  //}
  
  //create variable for the counter
- var count;
+ var counter = document.getElementById("count");
+ var count = 0;
+ counter.textContent = "this is your score: " + count
  
+
+ 
+
 // Function startquiz()
 //function startquiz() {
     //Start the timer
@@ -23,13 +28,14 @@
 //Start the questions
 //}
 
-// function questions () {
+function questions () {
      //present first questions in list with buttons for answers
      //for loop should roll through the questions iteratively
      //create an empty array to push the answers to (look at logic in current quiz)
      // have logic that amends the clock count if wrong answer chosen
  //
 
+ 
 // Create a submit button that finishes the rest and calls function answers
 // Onclick, this stops the timeer
 
@@ -38,7 +44,7 @@
 var questions = [
     { question: "What is the first question?",
     options: ["Here is option A for Q1", "Here is Option B for Q1", "Here is Option C for Q1", "Here is Option D for Q1"],
-    correctanswer: 1 }, 
+    correctanswer:"a" }, 
     
     {
     question: "What is the second question?",
@@ -51,13 +57,12 @@ var questions = [
 var score = 0;
 
 
-// Loop over every question object
-for (var i = 0; i < questions.length; i++) {
+
   
 // Display current question to user and ask OK/Cancel
 //Create a list for the possible answers
 
-var listEl = document.createElement("ol");
+var listEl = document.createElement("ul");
 var li1 = document.createElement("li");
 var li2 = document.createElement("li");
 var li3 = document.createElement("li");
@@ -67,10 +72,11 @@ var li4 = document.createElement("li");
 var listItems = document.getElementsByTagName("li");
 
 // text content
-li1.textContent = questions[i].options[0];
-li2.textContent = questions[i].options[1];
-li3.textContent = questions[i].options[2];
-li4.textContent = questions[i].options[3];
+listEl.textContent = questions[0].question;
+li1.textContent = questions[0].options[0];
+li2.textContent = questions[0].options[1];
+li3.textContent = questions[0].options[2];
+li4.textContent = questions[0].options[3];
 
 //append the elements
 
@@ -83,16 +89,25 @@ document.getElementById("Questions").appendChild(listEl);
 // also create buttons for each answer
 
  var answerabutton = document.createElement("button");
- button.innerHTML = "answer A";
+ answerabutton.innerHTML = "answer A";
  document.getElementById("Questions").appendChild(answerabutton);
  
  // with an event handler
  answerabutton.addEventListener ("click", function() {
-   alert("Move to the next question");
+   if (questions[0].correctanswer == "a") {
+    alert("Correct!!");
+    score++;
+    count++;
+   }
+   else {
+    alert("Wrong");
+   } 
  });
 
+ 
+
  var answerbbutton = document.createElement("button");
- button.innerHTML = "answer B";
+ answerbbutton.innerHTML = "answer B";
  document.getElementById("Questions").appendChild(answerbbutton);
  
  // with an event handler
@@ -100,25 +115,50 @@ document.getElementById("Questions").appendChild(listEl);
    alert("Move to the next question");
  });
 
-var answer = prompt(questions[i].question);
+ var answercbutton = document.createElement("button");
+ answercbutton.innerHTML = "answer C";
+ document.getElementById("Questions").appendChild(answercbutton);
+ 
+ // with an event handler
+ answercbutton.addEventListener ("click", function() {
+   alert("Move to the next question");
+ });
+
+ var answerdbutton = document.createElement("button");
+ answerdbutton.innerHTML = "answer D";
+ document.getElementById("Questions").appendChild(answerdbutton);
+ 
+ // with an event handler
+ answerdbutton.addEventListener ("click", function() {
+   alert("Move to the next question");
+ });
+
+}
+
+questions();
+
+// Loop over every question object
+//for (var i = 0; i < questions.length; i++) {
+
+//var answer = prompt(questions[i].question);
 
   
 
   // Compare answers
-  if ((answer === "0") ||
-    (answer === "1")) {
+  //if ((answer === "0") ||
+  //  (answer === "1")) {
     // Increase score
-    score++;
-    count++;
-    alert("Correct!");
-  }
-  else {
-    alert("Wrong!");
-  }
-}
+  //  score++;
+  //  count++;
+  //  alert("Correct!");
+//  }
+  //else {
+ //   alert("Wrong!");
+ /// }
+//}
 
 // Show total at end
-alert("You got " + score + "/" + questions.length);
+//alert("You got " + score + "/" + questions.length); */
 
 // end of questions function}
 
