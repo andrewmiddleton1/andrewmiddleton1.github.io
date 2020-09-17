@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Daily Planner Assignment</title>
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 </head>
@@ -12,96 +12,101 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.28.0/moment.min.js"></script>
     <div id="datetime">Your Daily Planner for: </div>
     <div class="list-group">
-       <a href="#"  class="list-group-item list-group-item-action"><button type="button" class="btn btn-secondary btn-lg float-left" disabled>0900</button> 
-        <div class="todos">
-            <form id="todo-form" method="POST">
-              <label for="todo-text"></label>
-              <input type="text" placeholder="What needs to be done?" name="todo-text" id="todo-text" />
+       <a class="list-group-item list-group-item-action"><button type="button" class="btn btn-secondary btn-lg float-left" disabled>0900</button> 
+          
+        <div class="ninetodos">
+            <form id="ninetodo-form" method="POST">
+              <label for="ninetodo-text"></label>
+              <input type="text" placeholder="What needs to be done?" name="ninetodo-text" id="ninetodo-text" />
             </form>
-            <p>Todo Count: <span id="todo-count">0</span></p>
-            <ul id="todo-list"></ul>
+              <ul id="ninetodo-list"></ul>
           </div>
-        <input class="btn btn-primary float-right" type="reset" value="Save Task"> </a>     
-        <a href="#" id="1000" class="list-group-item list-group-item-action list-group-item-primary"><button type="button" class="btn btn-secondary btn-lg float-left" disabled>1000</button>
-            <div class="todos">
-                <form id="todo-form" method="POST">
-                  <label for="todo-text"></label>
-                  <input type="text" placeholder="What needs to be done?" name="todo-text" id="todo-text" />
-                </form>
-                <p>Todo Count: <span id="todo-count">0</span></p>
-                <ul id="todo-list"></ul>
-              </div>
-            <input class="btn btn-primary float-right" type="reset" value="Save Task"></a>
-        <a href="#" id="1100" class="list-group-item list-group-item-action list-group-item-secondary"><button type="button" class="btn btn-secondary btn-lg float-left" disabled>1100</button>
-            <div class="todos">
-                <form id="todo-form" method="POST">
-                  <label for="todo-text"></label>
-                  <input type="text" placeholder="What needs to be done?" name="todo-text" id="todo-text" />
-                </form>
-                <p>Todo Count: <span id="todo-count">0</span></p>
-                <ul id="todo-list"></ul>
-              </div>
-            <input class="btn btn-primary float-right" type="reset" value="Save Tast"></a>
-        <a href="#" id="1200" class="list-group-item list-group-item-action list-group-item-success"><button type="button" class="btn btn-secondary btn-lg float-left" disabled>1200</button>
-            <div class="todos">
-                <form id="todo-form" method="POST">
-                  <label for="todo-text"></label>
-                  <input type="text" placeholder="What needs to be done?" name="todo-text" id="todo-text" />
-                </form>
-                <p>Todo Count: <span id="todo-count">0</span></p>
-                <ul id="todo-list"></ul>
-              </div>  
-            <input class="btn btn-primary float-right type="reset" value="Save Task"></a>
-        <a href="#" id="1300" class="list-group-item list-group-item-action list-group-item-danger"><button type="button" class="btn btn-secondary btn-lg float-left" disabled>1300</button>
-            <div class="todos">
-                <form id="todo-form" method="POST">
-                  <label for="todo-text"></label>
-                  <input type="text" placeholder="What needs to be done?" name="todo-text" id="todo-text" />
-                </form>
-                <p>Todo Count: <span id="todo-count">0</span></p>
-                <ul id="todo-list"></ul>
-              </div> 
-            <input class="btn btn-primary float-right" type="reset" value="Save Task"></a>
-        <a href="#" id="1400" class="list-group-item list-group-item-action list-group-item-warning"><button type="button" class="btn btn-secondary btn-lg float-left" disabled>1400</button>
-            <div class="todos">
-                <form id="todo-form" method="POST">
-                  <label for="todo-text"></label>
-                  <input type="text" placeholder="What needs to be done?" name="todo-text" id="todo-text" />
-                </form>
-                <p>Todo Count: <span id="todo-count">0</span></p>
-                <ul id="todo-list"></ul>
-              </div>
-            <input class="btn btn-primary float-right type="reset" value="Save Task"></a>
-        <a href="#" id="1500" class="list-group-item list-group-item-action list-group-item-info"><button type="button" class="btn btn-secondary btn-lg float-left" disabled>1500</button>
-            <div class="todos">
-                <form id="todo-form" method="POST">
-                  <label for="todo-text"></label>
-                  <input type="text" placeholder="What needs to be done?" name="todo-text" id="todo-text" />
-                </form>
-                <p>Todo Count: <span id="todo-count">0</span></p>
-                <ul id="todo-list"></ul>
-              </div>
-            <input class="btn btn-primary float-right" type="reset" value="Save Task"></a>
-        <a href="#" id="1600" class="list-group-item list-group-item-action list-group-item-light"><button type="button" class="btn btn-secondary btn-lg float-left" disabled>1600</button>
-            <div class="todos">
-                <form id="todo-form" method="POST">
-                  <label for="todo-text"></label>
-                  <input type="text" placeholder="What needs to be done?" name="todo-text" id="todo-text" />
-                </form>
-                <p>Todo Count: <span id="todo-count">0</span></p>
-                <ul id="todo-list"></ul>
-              </div>  
-            <input class="btn btn-primary float-right type="reset" value="Save Task"></a>
-        <a href="#" id="1700" class="list-group-item list-group-item-action list-group-item-dark"><button type="button" class="btn btn-secondary btn-lg float-left" disabled>1700</button>
-            <div class="todos">
-                <form id="todo-form" method="POST">
-                  <label for="todo-text"></label>
-                  <input type="text" placeholder="What needs to be done?" name="todo-text" id="todo-text" />
-                </form>
-                <p>Todo Count: <span id="todo-count">0</span></p>
-                <ul id="todo-list"></ul>
-              </div> 
-            <input class="btn btn-primary float-right" type="reset" value="Save Task"></a>
+        <input class="btn btn-primary float-right" id="ninehundred" type="reset" value="Save Task"> </a>     
+        
+        <a class="list-group-item list-group-item-action"><button type="button" class="btn btn-secondary btn-lg float-left" disabled>1000</button>
+        
+          <div class="tentodos">
+            <form id="tentodo-form" method="POST">
+              <label for="tentodo-text"></label>
+              <input type="text" placeholder="What needs to be done?" name="tentodo-text" id="tentodo-text" />
+            </form>
+              <ul id="tentodo-list"></ul>
+          </div>
+            <input class="btn btn-primary float-right" id="tenhundred" type="reset" value="Save Task"></a>
+        
+            <a class="list-group-item list-group-item-action list-group-item-secondary"><button type="button" class="btn btn-secondary btn-lg float-left" disabled>1100</button>
+          
+          <div class="eleventodos">
+            <form id="eleventodo-form" method="POST">
+              <label for="eleventodo-text"></label>
+              <input type="text" placeholder="What needs to be done?" name="eleventodo-text" id="eleventodo-text" />
+            </form>
+              <ul id="eleventodo-list"></ul>
+          </div>
+            <input class="btn btn-primary float-right" id="elevenhundred" type="reset" value="Save Task"></a>
+        
+            <a class="list-group-item list-group-item-action list-group-item-secondary"><button type="button" class="btn btn-secondary btn-lg float-left" disabled>1200</button>
+
+          <div class="twelvetodos">
+            <form id="twelvetodo-form" method="POST">
+              <label for="twelvetodo-text"></label>
+              <input type="text" placeholder="What needs to be done?" name="twelvetodo-text" id="twelvetodo-text" />
+            </form>
+              <ul id="twelvetodo-list"></ul>
+          </div>
+            <input class="btn btn-primary float-right" id="twelvehundred" type="reset" value="Save Task"></a>
+        <a class="list-group-item list-group-item-action list-group-item-secondary"><button type="button" class="btn btn-secondary btn-lg float-left" disabled>1300</button>
+
+          <div class="thirteentodos">
+            <form id="thirteentodo-form" method="POST">
+              <label for="thirteentodo-text"></label>
+              <input type="text" placeholder="What needs to be done?" name="thirteentodo-text" id="thirteentodo-text" />
+            </form>
+              <ul id="thirteentodo-list"></ul>
+          </div>
+            <input class="btn btn-primary float-right" id="thirteenhundred" type="reset" value="Save Task"></a>
+        <a class="list-group-item list-group-item-action list-group-item-secondary"><button type="button" class="btn btn-secondary btn-lg float-left" disabled>1400</button>
+
+          <div class="fourteentodos">
+            <form id="fourteentodo-form" method="POST">
+              <label for="fourteentodo-text"></label>
+              <input type="text" placeholder="What needs to be done?" name="fourteentodo-text" id="fourteentodo-text" />
+            </form>
+              <ul id="fourteentodo-list"></ul>
+          </div>
+            <input class="btn btn-primary float-right" id="fourteenhundred" type="reset" value="Save Task"></a>
+        <a class="list-group-item list-group-item-action list-group-item-secondary"><button type="button" class="btn btn-secondary btn-lg float-left" disabled>1500</button>
+
+          <div class="fifteentodos">
+            <form id="fifteentodo-form" method="POST">
+              <label for="fifteentodo-text"></label>
+              <input type="text" placeholder="What needs to be done?" name="fifteentodo-text" id="fifteentodo-text" />
+            </form>
+              <ul id="fifteentodo-list"></ul>
+          </div>
+            <input class="btn btn-primary float-right" id="fifteenhundred" type="reset" value="Save Task"></a>
+        <a class="list-group-item list-group-item-action list-group-item-secondary" id = "fifteen"><button type="button" class="btn btn-secondary btn-lg float-left" disabled>1600</button>
+
+          <div class="sixteentodos">
+            <form id="sixteentodo-form" method="POST">
+              <label for="sixteentodo-text"></label>
+              <input type="text" placeholder="What needs to be done?" name="sixteentodo-text" id="sixteentodo-text" />
+            </form>
+              <ul id="sixteentodo-list"></ul>
+          </div>
+            <input class="btn btn-primary float-right" id="sixteenhundred" type="reset" value="Save Task"></a>
+        <a class="list-group-item list-group-item-action list-group-item-secondary"><button type="button" class="btn btn-secondary btn-lg float-left" disabled>1700</button>
+
+          <div class="seventeentodos">
+            <form id="seventeentodo-form" method="POST">
+              <label for="seventeentodo-text"></label>
+              <input type="text" placeholder="What needs to be done?" name="seventeentodo-text" id="seventeentodo-text" />
+            </form>
+              <ul id="seventeentodo-list"></ul>
+          </div>
+            <input class="btn btn-primary float-right" id="seventeenhundred" type="reset" value="Save Task"></a>
+        
+
 
       </div>
       

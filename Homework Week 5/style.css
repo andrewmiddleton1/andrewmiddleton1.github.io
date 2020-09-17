@@ -11,7 +11,11 @@ input {
   margin-top: 10px;
   font-size: 2.4em;
   border: none;
-}
+  }
+
+/* #fifteen {
+  background-color: lightsalmon;
+} */
 
 #firstbutton {
   float:right;
