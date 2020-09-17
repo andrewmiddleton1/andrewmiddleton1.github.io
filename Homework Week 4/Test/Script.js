@@ -8,19 +8,19 @@
  
  // 3. Add event handler
  button.addEventListener ("click", function() {
-   alert("Put start function here");
+   Startquiz();
  });
  
- //}
- 
+function Startquiz() {
+    
  //create variable for the counter
  var counter = document.getElementById("count");
  var count = 0;
- counter.textContent = "Your current score is: " + count
+ counter.textContent = "Your current score is: " + count + "/" + questions.length
  
-
  
-
+// create a variable to store the question number we are up to
+var questioncount = 0;
 // Function startquiz()
 //function startquiz() {
     //Start the timer
@@ -42,15 +42,34 @@ function questions () {
 // quiz part of the app
 
 var questions = [
-    { question: "What is the first question?",
-    options: ["Here is option A for Q1", "Here is Option B for Q1", "Here is Option C for Q1", "Here is Option D for Q1"],
+    { question: "Inside which HTML element do we put JavaScript?",
+    options: ["<script>", "<javascript>", "<scripting>", "<js>"],
     correctanswer:"a" }, 
     
     {
-    question: "What is the second question?",
-    options: ["Here is OptionA for Q2", "Here is Option B for Q2", "Here is Option C for Q2", "Here is Option D for Q2"],
+    question: "Where is the correct place to insert a JavaScript?",
+    options: ["The <body> Section", "Both the <head> and the <body> section", "The <head> section", "Anywhere"],
+    correctanswer: "b"
+    },
+
+    {
+    question: "How does a FOR loop start?",
+     options: ["for(i=0; i<=5; i++)", "for i=1 to 5", "for(i<=5, i++", "for(i=0; i<=5)"],
     correctanswer: "a"
-    }
+        },
+
+    {
+    question: "How do you create a function in Javascript?",
+    options: ["function = myFunction()", "function myFunction()", "function:myFunction()", "function myFunction() = myFunction"],
+    correctanswer: "b"
+    },
+
+    {
+    question: "How does a WHILE loop start?",
+    options: ["while (i <=10; i++)", "while i=1 to 10", "while (i<=10)", "while i + 10++"],
+    correctanswer: "c"
+                    },
+
 ];   
 
 // We start the Quiz with a score of 0.
@@ -95,17 +114,22 @@ document.getElementById("Questions").appendChild(listEl);
  
  // with an event handler
  answerabutton.addEventListener ("click", function() {
-   if (questions[0].correctanswer == "a") {
+   if (questions[questioncount].correctanswer == "a") {
     alert("Correct!!");
     score++;
     count++;
-    counter.textContent = "Your current score is: " + count;
+    counter.textContent = "Your current score is: " + count + "/" + questions.length;
     questioncount++;
     NextQuestions();
+    checkiflast();
+    
    }
    else {
     alert("Wrong");
     secondsLeft -= 15;
+    questioncount++;
+    NextQuestions();
+    checkiflast();
    } 
  });
 
@@ -117,15 +141,21 @@ document.getElementById("Questions").appendChild(listEl);
  
  // with an event handler
  answerbbutton.addEventListener ("click", function() {
-    if (questions[0].correctanswer == "b") {
+    if (questions[questioncount].correctanswer == "b") {
         alert("Correct!!");
         score++;
         count++;
-        counter.textContent = "Your current score is: " + count;
-       }
+        counter.textContent = "Your score is: " + count + "/" + questions.length;
+        questioncount++;
+        NextQuestions();
+        checkiflast();
+    }
        else {
         alert("Wrong");
         secondsLeft -= 15;
+        questioncount++;
+        NextQuestions();
+        checkiflast();
        } 
  });
 
@@ -135,15 +165,21 @@ document.getElementById("Questions").appendChild(listEl);
  
  // with an event handler
  answercbutton.addEventListener ("click", function() {
-    if (questions[0].correctanswer == "c") {
+    if (questions[questioncount].correctanswer == "c") {
         alert("Correct!!");
         score++;
         count++;
-        counter.textContent = "Your current score is: " + count;
-       }
+        counter.textContent = "Your score is: " + count + "/" + questions.length;
+        questioncount++;
+        NextQuestions();
+        checkiflast();
+    }
        else {
         alert("Wrong");
         secondsLeft -= 15;
+        questioncount++;
+        NextQuestions();
+        checkiflast();
        } ;
  });
 
@@ -153,20 +189,29 @@ document.getElementById("Questions").appendChild(listEl);
  
  // with an event handler
  answerdbutton.addEventListener ("click", function() {
-    if (questions[0].correctanswer == "d") {
+    if (questions[questioncount].correctanswer == "d") {
         alert("Correct!!");
         score++;
         count++;
-        counter.textContent = "Your current score is: " + count;
-       }
+        counter.textContent = "Your score is: " + count + "/" + questions.length;
+        questioncount++;
+        NextQuestions();
+        checkiflast();
+    }
        else {
         alert("Wrong");
         secondsLeft -= 15;
+        questioncount++;
+        NextQuestions();
+        checkiflast();
        } ;
  });
 
 function NextQuestions() {
 
+    if (questioncount >= questions.length) {
+       return; 
+    }
     console.log(questioncount);
       
         listEl.textContent = questions[questioncount].question;
@@ -175,47 +220,30 @@ function NextQuestions() {
         li3.textContent = questions[questioncount].options[2];
         li4.textContent = questions[questioncount].options[3];
  
+        listEl.appendChild(li1);
+        listEl.appendChild(li2);
+        listEl.appendChild(li3);
+        listEl.appendChild(li4);
+        
+
+        console.log(li1.textContent);
+        console.log(li2.textContent);
+        console.log(li3.textContent);
+        console.log(li4.textContent);
 }
+
+//end to the quiz
+function checkiflast() {
+    console.log(questioncount, questions.length);
+       if (questioncount == questions.length) {
+       clearInterval(timerInterval);
+       timeEl.textContent = "End Quiz"
+    }
+   }
 
 }
 
 questions();
-
-// Loop over every question object
-//for (var i = 0; i < questions.length; i++) {
-
-//var answer = prompt(questions[i].question);
-
-  
-
-  // Compare answers
-  //if ((answer === "0") ||
-  //  (answer === "1")) {
-    // Increase score
-  //  score++;
-  //  count++;
-  //  alert("Correct!");
-//  }
-  //else {
- //   alert("Wrong!");
- /// }
-//}
-
-// Show total at end
-//alert("You got " + score + "/" + questions.length); */
-
-// end of questions function}
-
-
-
-
- //function answers() {
-     //comapare the new array of answers with the existing array containing answers
-     //display a score
- //}
-
-
-
 
 
 // timer part of the app
@@ -224,13 +252,14 @@ var timeEl = document.querySelector(".time");
 var mainEl = document.getElementById("main");
 
 var secondsLeft = 45;
+var timerInterval; 
 
 function setTime() {
-  var timerInterval = setInterval(function() {
+  timerInterval = setInterval(function() {
     secondsLeft--;
     timeEl.textContent = secondsLeft + " seconds remaining until end of quiz.";
 
-    if(secondsLeft === 0) {
+    if(secondsLeft <= 0) {
       clearInterval(timerInterval);
       sendMessage();
     }
@@ -240,10 +269,29 @@ function setTime() {
 
 function sendMessage() {
   timeEl.textContent = "Your Time is Up";
+}
+
+setTime();
 
 
 
 }
 
-setTime();
-   
+// Input High Score
+function HighScore() {
+  
+  var countstring = JSON.stringify(count);
+  var highscore = localStorage.getItem("highscore");
+  
+  if(highscore !== null){
+      if (count > highscore) {
+          localStorage.setItem("highscore", countstring);      
+      }
+  }
+  else{
+      localStorage.setItem("highscore", countstring);
+  }
+  console.log(highscore);
+  }
+  
+  HighScore();
