@@ -11,6 +11,9 @@
    Startquiz();
  });
  
+//declare variable for the highscore
+//var score = 0;
+
 function Startquiz() {
     
  //create variable for the counter
@@ -20,7 +23,7 @@ function Startquiz() {
  
  
 // create a variable to store the question number we are up to
-var questioncount = 0;
+//var questioncount = 0;
 // Function startquiz()
 //function startquiz() {
     //Start the timer
@@ -238,8 +241,52 @@ function checkiflast() {
        if (questioncount == questions.length) {
        clearInterval(timerInterval);
        timeEl.textContent = "End Quiz"
+       HighScore();
     }
    }
+
+      // Input High Score
+      function HighScore() {
+  
+        console.log(score);
+        var scorestring = JSON.stringify(score);
+        localStorage.setItem("highscore", scorestring); 
+        var highscore = localStorage.getItem("highscore");
+        var initials = localStorage.getItem("initials");
+        
+        if(highscore !== null){
+            if (score > highscore) {
+                localStorage.setItem("highscore", scorestring); 
+                var newhighscoreinitials = prompt("You have the highest score! Please enter your initials");
+                localStorage.setItem("initials", newhighscoreinitials);   
+                
+            }
+        }
+        else{
+            localStorage.setItem("highscore", scorestring);
+        }
+            console.log(highscore);
+                console.log(initials); 
+        }
+
+// Create a button to clear the high scores
+var clearhighscorebtn = document.createElement("button");   // Create a <button> element
+clearhighscorebtn.innerHTML = "Clear High Score";                   // Insert text
+document.body.appendChild(clearhighscorebtn);               // Append <button> to <body>
+
+// Clear High Score when Clicked
+clearhighscorebtn.addEventListener ("click", function() {
+  window.localStorage.clear();
+});
+
+clearhighscorebtn.addEventListener ("click", function() {
+  window.localStorage.clear();
+  
+  console.log(localStorage);
+  console.log(localStorage.getItem("highscore"));
+});
+
+
 
 }
 
@@ -262,7 +309,7 @@ function setTime() {
     if(secondsLeft <= 0) {
       clearInterval(timerInterval);
       sendMessage();
-    }
+     }
 
   }, 1000);
 }
@@ -277,21 +324,6 @@ setTime();
 
 }
 
-// Input High Score
-function HighScore() {
-  
-  var countstring = JSON.stringify(count);
-  var highscore = localStorage.getItem("highscore");
-  
-  if(highscore !== null){
-      if (count > highscore) {
-          localStorage.setItem("highscore", countstring);      
-      }
-  }
-  else{
-      localStorage.setItem("highscore", countstring);
-  }
-  console.log(highscore);
-  }
-  
-  HighScore();
+
+    
+   
