@@ -22,27 +22,17 @@ function Startquiz() {
  counter.textContent = "Your current score is: " + count + "/" + questions.length
  
  
-// create a variable to store the question number we are up to
-//var questioncount = 0;
-// Function startquiz()
-//function startquiz() {
-    //Start the timer
-   // setTime();
-//Start the questions
-//}
-
+// Set a counter for the quiz store (outside of the questions function)
+var score = 0;
+ 
+// Create the function for asking the quiz questions
 function questions () {
      //present first questions in list with buttons for answers
      //for loop should roll through the questions iteratively
-     //create an empty array to push the answers to (look at logic in current quiz)
+     //create an empty array to push the answers to 
      // have logic that amends the clock count if wrong answer chosen
- //
-
  
-// Create a submit button that finishes the rest and calls function answers
-// Onclick, this stops the timeer
-
-// quiz part of the app
+// this is the array that stores all of the questions, answers and correct answer
 
 var questions = [
     { question: "Inside which HTML element do we put JavaScript?",
@@ -75,10 +65,7 @@ var questions = [
 
 ];   
 
-// We start the Quiz with a score of 0.
-var score = 0;
-
-//and a question count of 0
+//this variable will store which question the user is up to. Intially I have set the  count of 0
 var questioncount = 0;
 
  
@@ -115,7 +102,8 @@ document.getElementById("Questions").appendChild(listEl);
  answerabutton.innerHTML = "answer A";
  document.getElementById("Questions").appendChild(answerabutton);
  
- // with an event handler
+ // with an event handler, which performs a number of operations when clicked, including updating
+ // the score, the count and calling the nextquestions function, along with the checkiflast function
  answerabutton.addEventListener ("click", function() {
    if (questions[questioncount].correctanswer == "a") {
     alert("Correct!!");
@@ -135,8 +123,6 @@ document.getElementById("Questions").appendChild(listEl);
     checkiflast();
    } 
  });
-
- 
 
  var answerbbutton = document.createElement("button");
  answerbbutton.innerHTML = "answer B";
@@ -210,6 +196,7 @@ document.getElementById("Questions").appendChild(listEl);
        } ;
  });
 
+ // the function is called when the answer is submitted and moves to the next element of the array
 function NextQuestions() {
 
     if (questioncount >= questions.length) {
@@ -241,34 +228,12 @@ function checkiflast() {
        if (questioncount == questions.length) {
        clearInterval(timerInterval);
        timeEl.textContent = "End Quiz"
-       HighScore();
-    }
+       InputHighScore();
+      }
    }
 
-      // Input High Score
-      function HighScore() {
-  
-        console.log(score);
-        var scorestring = JSON.stringify(score);
-        localStorage.setItem("highscore", scorestring); 
-        var highscore = localStorage.getItem("highscore");
-        var initials = localStorage.getItem("initials");
-        
-        if(highscore !== null){
-            if (score > highscore) {
-                localStorage.setItem("highscore", scorestring); 
-                var newhighscoreinitials = prompt("You have the highest score! Please enter your initials");
-                localStorage.setItem("initials", newhighscoreinitials);   
-                
-            }
-        }
-        else{
-            localStorage.setItem("highscore", scorestring);
-        }
-            console.log(highscore);
-                console.log(initials); 
-        }
 
+      
 // Create a button to clear the high scores
 var clearhighscorebtn = document.createElement("button");   // Create a <button> element
 clearhighscorebtn.innerHTML = "Clear High Score";                   // Insert text
@@ -277,21 +242,11 @@ document.body.appendChild(clearhighscorebtn);               // Append <button> t
 // Clear High Score when Clicked
 clearhighscorebtn.addEventListener ("click", function() {
   window.localStorage.clear();
-});
-
-clearhighscorebtn.addEventListener ("click", function() {
-  window.localStorage.clear();
-  
   console.log(localStorage);
-  console.log(localStorage.getItem("highscore"));
+  $(document.body.highestscorer).remove();
 });
-
-
 
 }
-
-questions();
-
 
 // timer part of the app
 
@@ -309,6 +264,7 @@ function setTime() {
     if(secondsLeft <= 0) {
       clearInterval(timerInterval);
       sendMessage();
+      InputHighScore();
      }
 
   }, 1000);
@@ -318,11 +274,43 @@ function sendMessage() {
   timeEl.textContent = "Your Time is Up";
 }
 
+// call the timer function
 setTime();
 
 
+//call the questions function
+questions();
+
+// This function prompts the user to enter their initials if they score greater than 0 and higher than 
+// previous users. The function is called either at the last question or when the timer reaches zero. 
+function InputHighScore() {
+  
+  var highscore = score;
+  var scorefromstorage = localStorage.getItem("highscore");
+  var initialsfromstorage = localStorage.getItem("initials");
+
+  if (highscore > scorefromstorage) {
+
+    var scorestring = JSON.stringify(score);
+    var highscoreinitials = prompt("You have high scored! Please enter your initials");
+    localStorage.setItem("highscore", scorestring); 
+    localStorage.setItem("initials", highscoreinitials);
+    console.log(highscoreinitials); 
+    // Create a button to display the highest scorer
+    var highestscorer = document.createElement("button");   // Create a <button> element
+    highestscorer.innerHTML = "Highest Scorer:" + highscoreinitials;                   // Insert text
+    document.body.appendChild(highestscorer);               // Append <button> to <body>
+
+  }
+   
+console.log(score);
+console.log(scorefromstorage);
 
 }
+
+//end of the StartQuiz function
+}
+
 
 
     

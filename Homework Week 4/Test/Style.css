@@ -5,53 +5,17 @@
     <h1 class="time"></h1>
     <Div id="count"></Div> */
 
-
-    .flex-container {
-        /* We first create a flex layout context */
-        display: flex;
-        
-        /* Then we define the flow direction 
-           and if we allow the items to wrap 
-         * Remember this is the same as:
-         * flex-direction: row;
-         * flex-wrap: wrap;
-         */
-        flex-flow: row wrap;
-        
-        /* Then we define how is distributed the remaining space */
-        justify-content: space-around;
-        
-        padding: 0;
-        margin: 0;
-        list-style: none;
-      }
-      
-      .flex-item {
-        background: tomato;
-        padding: 5px;
-        width: 200px;
-        height: 150px;
-        margin-top: 10px;
-        line-height: 150px;
-        color: white;
-        font-weight: bold;
-        font-size: 3em;
-        text-align: center;
-      }
-
-    .container {
-        display: flex; /* or inline-flex */
-      }
+h1 {
+  font-size: 25px;
+}
 
 body {
-    font-size: 20px;
     background: lightblue
 }
 
 
 #main {
-    
-    font-size: 10px;
+     
     color: #333;
     background: #2a035c;
   }
@@ -61,11 +25,11 @@ body {
   }
   
   #Questions {
-    padding: 20px;
+    /* padding: 20px;
     margin: 20;
     margin-bottom: 20px;
     margin-right: 600px;
-    font-size: 20px;
+    font-size: 20px; */
     color: rgb(26, 10, 10);
     background: lightsalmon;
     text-align: left;
@@ -74,15 +38,15 @@ body {
 
 #count {
     
-    margin-right: 600px;
-    font-size: 20px;
+    /* margin-right: 600px;
+    font-size: 20px; */
     background: rgb(123, 204, 123)
 
 }
 
 .time {
-    margin-right: 600px;
-    font-size: 20px;
+    /* margin-right: 600px;
+    font-size: 20px; */
     background: yellow
 }
 
